@@ -1,0 +1,263 @@
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 32px 40px;
+  font-family: "Courier New", Courier, monospace;
+  background-image:
+    linear-gradient(160deg, rgba(26, 13, 46, 0.93) 0%, rgba(13, 7, 20, 0.95) 60%, rgba(0, 0, 0, 0.96) 100%),
+    url("assets/images/background.jpg");
+  background-size: auto, 420px;
+  background-position: center, center;
+  background-repeat: repeat, repeat;
+  background-attachment: fixed, fixed;
+  color: #f2eaff;
+  min-height: 100vh;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  padding-top: 4px;
+}
+
+main p {
+  color: #d8c5f0;
+}
+
+/* ===== Header ===== */
+header {
+  padding-top: 28px;
+  border-bottom: 0.5px solid #3a2a52;
+  margin-bottom: 24px;
+}
+
+.site-logo {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  margin: 4px 0 6px;
+}
+
+header h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 18px;
+  color: #f2eaff;
+}
+
+/* ===== Nav ===== */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-bottom: 14px;
+  font-size: 16px;
+}
+
+nav a {
+  color: #c084fc;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #e9d5ff;
+  text-decoration: underline;
+}
+
+/* the "HOME" link stands out, like in the mockup */
+nav a:first-child {
+  color: #f2eaff;
+}
+
+/* Hamburger toggle: hidden checkbox drives the menu open/closed */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #f2eaff;
+  padding-bottom: 14px;
+}
+
+/* ===== Responsive breakpoint ===== */
+@media (max-width: 700px) {
+  body {
+    padding: 0 18px 30px;
+  }
+
+  .nav-toggle-label {
+    display: block;
+  }
+
+  nav {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    gap: 10px;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav-toggle:checked ~ nav {
+    max-height: 500px;
+    padding-top: 6px;
+  }
+
+  nav a {
+    font-size: 18px;
+  }
+}
+
+/* ===== Main content ===== */
+main h2 {
+  font-size: 24px;
+  color: #f2eaff;
+  margin-bottom: 4px;
+}
+
+.prompt-label {
+  color: #c084fc;
+  font-size: 17px;
+  margin: 18px 0 14px;
+}
+
+.course-list {
+  font-size: 18px;
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: course-counter;
+}
+
+.course-list li {
+  counter-increment: course-counter;
+}
+
+.course-list a {
+  display: block;
+  background: #2d1b47;
+  border: 0.5px solid #3a2a52;
+  color: #e9d5ff;
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: 8px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.course-list a::before {
+  content: counter(course-counter) ". ";
+  color: #c084fc;
+  font-weight: 700;
+}
+
+.course-list a:hover {
+  background: #3a2359;
+  border-color: #c084fc;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+main a {
+  color: #e9d5ff;
+  text-decoration: none;
+}
+
+main a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ===== Topic page sections ===== */
+section {
+  margin: 28px 0;
+}
+
+section h3 {
+  color: #c084fc;
+  font-size: 19px;
+  border-bottom: 0.5px solid #3a2a52;
+  padding-bottom: 6px;
+}
+
+section h4 {
+  color: #c084fc;
+  font-size: 16px;
+  margin-top: 22px;
+}
+
+section ul {
+  font-size: 17px;
+  line-height: 1.9;
+  padding-left: 20px;
+}
+
+.video-embed {
+  margin-bottom: 20px;
+}
+
+.video-embed p {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: #f2eaff;
+}
+
+.video-embed iframe {
+  max-width: 100%;
+  border: 0.5px solid #3a2a52;
+  border-radius: 6px;
+}
+
+/* ===== Download buttons ===== */
+/* Targets any link with the download attribute, so no extra class needed */
+a[download] {
+  display: inline-block;
+  background: #2d1b47;
+  border: 0.5px solid #c084fc;
+  color: #e9d5ff !important;
+  padding: 8px 14px;
+  margin: 4px 0;
+  border-radius: 6px;
+  font-size: 16px;
+  text-decoration: none !important;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+a[download]:hover {
+  background: #c084fc;
+  color: #1a0d2e !important;
+}
+
+/* remove the bullet dots on lists that are really just buttons */
+section ul li:has(a[download]) {
+  list-style: none;
+  margin-left: -20px;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 50px;
+  padding: 20px 0 10px;
+  border-top: 0.5px solid #3a2a52;
+  text-align: center;
+}
+
+footer p {
+  font-size: 13px;
+  color: #a78bc7;
+  margin: 0;
+  line-height: 1.6;
+}
